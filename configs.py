@@ -1,4 +1,6 @@
+import os
 import platform
+from pathlib import Path
 
 from pydantic import BaseSettings
 
@@ -18,6 +20,10 @@ class ProjectSetting(BaseSettings):
     DB_NAME = 'money'
     DB_USER = ''
     DB_PASSWORD = ''
+
+    # base
+    ROOT_DIR = Path(os.path.realpath(__file__)).parent
+    DATA_DIR = ROOT_DIR / 'data'
 
     class Config:
         env_prefix = 'BILL_'

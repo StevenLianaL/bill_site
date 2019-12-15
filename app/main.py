@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 
 from app.db import database
+from app.routers import bill
 
 app = FastAPI(
     title='Bill Site',
@@ -22,3 +23,6 @@ async def startup():
 @app.on_event("shutdown")
 async def shutdown():
     await database.disconnect()
+
+
+app.include_router(bill.router, prefix='/bill', tags=['bill'])
