@@ -1,9 +1,13 @@
+from typing import List
+
 from fastapi import APIRouter
 
 import pandas as pd
 from psycopg2 import connect
 
+from app.models import BillOut
 from configs import project
+from funcs import load_data
 
 router = APIRouter()
 
@@ -26,7 +30,8 @@ async def reset():
     return 'reset successfully'
 
 
-@router.get('/all')
+@router.get('/all', response_model=List[BillOut])
 async def get_all():
-    # todo load all data
-    pass
+    """Get all bills"""
+    data = await load_data()
+    return data.to_dict(orient='record')
