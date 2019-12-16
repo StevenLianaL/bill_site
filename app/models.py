@@ -1,4 +1,5 @@
 from datetime import datetime
+from typing import List
 
 from pydantic import BaseModel
 
@@ -28,3 +29,9 @@ class BillOut(BaseModel):
     io: str
     source: str
     relation: str
+
+
+class BillWithMeta(BaseModel):
+    count: int
+    money: float
+    bills: List[BillOut]
