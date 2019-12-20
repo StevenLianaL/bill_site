@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
 from app.db import database
-from app.routers import bill
+from app.routers import bill, api
 
 app = FastAPI(
     title='Bill Site',
@@ -31,3 +31,4 @@ async def shutdown():
 
 
 app.include_router(bill.router, prefix='/bill', tags=['bill'])
+app.include_router(api.router, prefix='/api', tags=['api'])
