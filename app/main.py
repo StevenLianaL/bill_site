@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from starlette.middleware.cors import CORSMiddleware
 
 from app.db import database
 from app.routers import bill
@@ -8,6 +9,10 @@ app = FastAPI(
     description='Data Visualization for bill',
     version='0.0.1'
 )
+
+app.add_middleware(CORSMiddleware,
+                   allow_origins=['*'], allow_credentials=True,
+                   allow_methods=["*"], allow_headers=["*"], )
 
 
 @app.get('/')
