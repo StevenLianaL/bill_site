@@ -20,6 +20,7 @@ class BillDb(BaseModel):
 
 
 class BillOut(BaseModel):
+    id: int
     category: str
     secondary: str
     remark: str
