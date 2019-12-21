@@ -5,7 +5,7 @@ from fastapi import APIRouter
 import pandas as pd
 from psycopg2 import connect
 
-from app.models import BillOut, BillWithMeta
+from app.models import BillWithMeta
 from configs import project
 from funcs import load_data
 from tools.bill_helper import BillFilter
